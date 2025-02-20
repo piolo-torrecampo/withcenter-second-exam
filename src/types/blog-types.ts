@@ -7,5 +7,5 @@ export default interface Blog {
   title: string,
   description: string,
   body: string 
-  user?: User
+  users?: User
 }

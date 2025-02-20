@@ -37,9 +37,9 @@ const DashboardLayout = ({ blogs }: DashboardProps) => {
                 id={String(blog.id)}
                 title={blog.title}
                 description={blog.description}
-                creator={blog.user?.fullname || "Unknown"}
+                creator={blog.users?.fullname || "Unknown"}
                 publishedDate={blog.created_at ? new Date(blog.created_at).toLocaleDateString() : ''}
-                onClick={(id) => setSelectedBlog(blogs.find(b => b.id === id) || null)}
+                onClick={(id) => setSelectedBlog(blogs.find(b => String(b.id) === id) || null)}
                 isSelected={selectedBlog?.id === blog.id}
               />
             ))
