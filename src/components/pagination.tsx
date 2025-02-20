@@ -45,7 +45,7 @@ const PaginationComponent: FC<PaginationComponentProps> = ({
             className="cursor-pointer"
             type="button"
             onClick={() => onPageChange(currentPage - 1)}
-            disabled={currentPage === 1}
+            aria-disabled={currentPage === 1}
           />
         </PaginationItem>
 
@@ -71,7 +71,7 @@ const PaginationComponent: FC<PaginationComponentProps> = ({
             type="button"
             className="cursor-pointer"
             onClick={() => onPageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
+            aria-disabled={currentPage === totalPages}
           />
         </PaginationItem>
       </PaginationContent>
