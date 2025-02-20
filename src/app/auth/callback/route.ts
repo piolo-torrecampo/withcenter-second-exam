@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 // The client you created from the Server-Side Auth instructions
 import { createClientForServer } from '@/utils/supabase/server'
-import { getAllUserInfo } from '@/utils/supabase/get-user-info'
 import addUser from '@/utils/supabase/add-user'
 
 

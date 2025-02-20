@@ -1,6 +1,5 @@
 "use client"
 
-import Blog from "@/types/blog-types";
 
 interface BlogCardProps {
   id: string;
