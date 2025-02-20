@@ -1,6 +1,4 @@
 "use client";
-
-import * as React from "react";
 import { LogOut, Trash2 } from "lucide-react";
 
 import {

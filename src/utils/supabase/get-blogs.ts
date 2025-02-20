@@ -1,6 +1,6 @@
 "use server"
 
-import { createClientForServer } from "./server"
+import { createClientForServer } from "@/utils/supabase/server";
 
 const getBlogCount = async () => {
   const supabase = await createClientForServer();

@@ -1,4 +1,4 @@
-import User from "./user-types"
+import User from "@/types/user-types"
 
 export default interface Blog {
   id?: number,

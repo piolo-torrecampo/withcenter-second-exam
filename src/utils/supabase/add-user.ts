@@ -1,6 +1,6 @@
 "use server"
 
-import { createClientForServer } from "./server";
+import { createClientForServer } from "@/utils/supabase/server";
 import User from "@/types/user-types";
 
 export default async function addUser(user: User) {

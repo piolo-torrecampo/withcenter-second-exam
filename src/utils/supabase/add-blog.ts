@@ -1,7 +1,7 @@
 "use server"
 
 import Blog from "@/types/blog-types";
-import { createClientForServer } from "./server";
+import { createClientForServer } from "@/utils/supabase/server";
 
 export default async function addBlog(blog: Blog) {
   const supabase = await createClientForServer()
