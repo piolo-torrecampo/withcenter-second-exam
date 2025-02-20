@@ -34,10 +34,10 @@ const DashboardLayout = ({ blogs }: DashboardProps) => {
             currentBlogs.map((blog) => (
               <BlogCard
                 key={blog.id}
-                id={blog.id}
+                id={String(blog.id)}
                 title={blog.title}
                 description={blog.description}
-                creator={blog.users?.fullname || "Unknown"}
+                creator={blog.user?.fullname || "Unknown"}
                 publishedDate={blog.created_at ? new Date(blog.created_at).toLocaleDateString() : ''}
                 onClick={(id) => setSelectedBlog(blogs.find(b => b.id === id) || null)}
                 isSelected={selectedBlog?.id === blog.id}
