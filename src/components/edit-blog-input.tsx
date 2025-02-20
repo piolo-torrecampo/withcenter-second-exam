@@ -11,6 +11,7 @@ import "github-markdown-css";
 import AlertPopOut from "./ui/alert-popout";
 import { useParams } from "next/navigation";
 import { useBlog } from "@/context/UserBlogsContext"; 
+import Blog from "@/types/blog-types";
 
 const EditBlogForm = () => {
   const { blogId } = useParams<{ blogId: string }>();
@@ -26,7 +27,7 @@ const EditBlogForm = () => {
     setAlert({ message, type });
   };
 
-  const blog = blogs.find((b: any) => b.id === parseInt(blogId));
+  const blog = blogs.find((b: Blog) => b.id === parseInt(blogId));
 
   useEffect(() => {
     if (!blogId) return;
