@@ -38,7 +38,7 @@ const EditBlogForm = () => {
       setBody(blog.body);
       setFetching(false);
     } 
-  }, [blogId, blogs]);
+  }, [blogId, blog]);
 
   const handleSave = async () => {
     if (!title || !description || !body) {
@@ -51,7 +51,7 @@ const EditBlogForm = () => {
       await editBlog({ id: parseInt(blogId), title, description, body });
       showAlert("Blog saved successfully!", "default");
     } catch (err) {
-      showAlert("Failed to save the blog. Please try again.", "destructive");
+      showAlert(`Failed to save the blog. Please try again. ${err}`, "destructive" );
     } finally {
       setLoading(false);
     }
