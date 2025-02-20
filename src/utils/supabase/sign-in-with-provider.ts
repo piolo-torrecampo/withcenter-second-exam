@@ -9,7 +9,7 @@ type ProviderType = 'google' | 'github';
 const signInWithProvider = (provider: ProviderType) => async() => {
   const supabase = await createClientForServer()
 
-  const auth_callback_url = `${process.env.NEXT_WEBSITE_URL}/auth/callback`
+  const auth_callback_url = `${process.env.NEXT_PUBLIC_URL}/auth/callback`
 
   const {data, error}= await supabase.auth.signInWithOAuth({
     provider,
