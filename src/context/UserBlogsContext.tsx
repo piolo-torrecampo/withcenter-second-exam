@@ -20,25 +20,26 @@ const UserBlogsContext = createContext<BlogContextType | undefined>(undefined);
 export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
-  useEffect(() => {
-    async function fetchBlogs() {
-      try {
-        const result = await getUserBlogs();
-        if (result) setBlogs(result);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
+  async function fetchBlogs() {
+    try {
+      const result = await getUserBlogs();
+      if (result) {
+        setBlogs([...result]);
+        console.log('PASSED')
       }
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
     }
+  }
+
+  useEffect(() => {
     fetchBlogs();
   }, []);
    
   async function addNewBlog(blog: Blog) {
     try {
-      const newBlog = await addBlog(blog);
-
-      if (newBlog) {
-        setBlogs((prev) => [...prev, newBlog]);
-      }
+      await addBlog(blog);
+      await fetchBlogs()
     } catch (error) {
       console.error("Failed to add blog:", error);
     }
@@ -47,10 +48,7 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
   async function editBlog(updatedBlog: Blog) {
     try {
       await updateBlog(updatedBlog, `${updatedBlog.id}`);
-  
-      setBlogs((prev) =>
-        prev.map((blog) => (blog.id === updatedBlog.id ? updatedBlog : blog))
-      );
+      await fetchBlogs()
     } catch (error) {
       console.error("Failed to update blog:", error);
     }
@@ -59,7 +57,7 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
   async function deleteBlogById(blogId: number) {
     try {
       await deleteBlog(blogId);
-      setBlogs((prev) => prev.filter((blog) => blog.id !== blogId));
+      await fetchBlogs()
     } catch (error) {
       console.error("Failed to delete blog:", error);
     }
