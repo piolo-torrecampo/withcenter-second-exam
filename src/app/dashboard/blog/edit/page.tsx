@@ -9,13 +9,15 @@ import { Button } from "@/components/ui/button";
 import Markdown from "react-markdown";
 import "github-markdown-css";
 import AlertPopOut from "@/components/ui/alert-popout";
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useBlog } from "@/context/UserBlogsContext"; 
 import Blog from "@/types/blog-types";
 import { BlogProvider } from "@/context/UserBlogsContext";
 
 const EditBlogForm = () => {
-  const { blogId } = useParams<{ blogId: string }>();
+  const searchParams = useSearchParams();
+  const blogId = searchParams.get("id"); 
+
   const { blogs, editBlog } = useBlog();
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -28,7 +30,7 @@ const EditBlogForm = () => {
     setAlert({ message, type });
   };
 
-  const blog = blogs.find((b: Blog) => b.id === parseInt(blogId));
+  const blog = blogs.find((b: Blog) => b.id === parseInt(blogId || "0"));
 
   useEffect(() => {
     if (!blogId) return;
@@ -49,7 +51,7 @@ const EditBlogForm = () => {
 
     try {
       setLoading(true);
-      await editBlog({ id: parseInt(blogId), title, description, body });
+      await editBlog({ id: parseInt(blogId || "0"), title, description, body });
       showAlert("Blog saved successfully!", "default");
     } catch (err) {
       showAlert(`Failed to save the blog. Please try again. ${err}`, "destructive" );

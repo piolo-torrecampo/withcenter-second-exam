@@ -59,7 +59,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuSubItem key={blog.id}>
                   <SidebarMenuSubButton asChild>
                     <div className="flex flex-row justify-between">
-                      <Link href={`/dashboard/blog/edit/${blog.id}`} className="truncate">{blog.title}</Link>
+                      <Link href={`/dashboard/blog/edit?id=${blog.id}`} className="truncate">{blog.title}</Link>
                       <Button
                         className="bg-transparent"
                         onClick={(e) => {
