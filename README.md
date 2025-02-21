@@ -12,5 +12,6 @@
 - Tailwind
 - Shadcn
 
-**Authentication and Authorization**
-- PKCE Approach
+**Auth**
+- Github
+- Google
