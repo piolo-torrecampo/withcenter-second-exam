@@ -46,7 +46,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link href={'/dashboard/blog/create'} className="font-medium">Create a Blog</Link>
+                <Link href={'/dashboard/create'} className="font-medium">Create a Blog</Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -59,7 +59,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuSubItem key={blog.id}>
                   <SidebarMenuSubButton asChild>
                     <div className="flex flex-row justify-between">
-                      <Link href={`/dashboard/blog/edit?id=${blog.id}`} className="truncate">{blog.title}</Link>
+                      <Link href={`/dashboard/edit?id=${blog.id}`} className="truncate">{blog.title}</Link>
                       <Button
                         className="bg-transparent"
                         onClick={(e) => {

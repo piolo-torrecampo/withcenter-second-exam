@@ -71,7 +71,7 @@ const DashboardLayout = ({ blogs }: DashboardProps) => {
               </div>
           </div>
           <div className="prose prose-lg max-w-full">
-            <Markdown className="markdown-body p-5">{selectedBlog.body}</Markdown>
+            <Markdown className="markdown-body p-5">{selectedBlog.body || ""}</Markdown>
           </div>
         </div>
       )}
