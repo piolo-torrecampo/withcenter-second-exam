@@ -14,7 +14,7 @@ import { useBlog } from "@/context/UserBlogsContext";
 import Blog from "@/types/blog-types";
 import { BlogProvider } from "@/context/UserBlogsContext";
 
-const EditBlogForm = () => {
+export default function EditBlogPage() {
   const searchParams = useSearchParams();
   const blogId = searchParams.get("id"); 
 
@@ -134,4 +134,3 @@ const EditBlogForm = () => {
   );
 };
 
-export default EditBlogForm;
