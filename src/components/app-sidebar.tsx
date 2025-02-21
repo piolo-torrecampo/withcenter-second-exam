@@ -1,4 +1,5 @@
 "use client";
+
 import { LogOut, Trash2 } from "lucide-react";
 
 import {
@@ -21,7 +22,7 @@ import { useBlog } from "@/context/UserBlogsContext";
 import Link from "next/link";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { blogs, deleteBlogById } = useBlog();
+  const { blogs = [], deleteBlogById } = useBlog();
 
   const handleLogout = async () => {
     try {

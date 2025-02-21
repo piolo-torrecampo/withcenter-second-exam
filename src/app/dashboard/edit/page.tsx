@@ -48,13 +48,23 @@ const EditBlogForm = () => {
       showAlert("All fields are required.", "destructive");
       return;
     }
-
+  
+    if (
+      blog &&
+      blog.title === title &&
+      blog.description === description &&
+      blog.body === body
+    ) {
+      showAlert("No changes made.", "default");
+      return;
+    }
+  
     try {
       setLoading(true);
       await editBlog({ id: parseInt(blogId || "0"), title, description, body });
       showAlert("Blog saved successfully!", "default");
     } catch (err) {
-      showAlert(`Failed to save the blog. Please try again. ${err}`, "destructive" );
+      showAlert(`Failed to save the blog. ${err}`, "destructive");
     } finally {
       setLoading(false);
     }

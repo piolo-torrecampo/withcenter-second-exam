@@ -30,8 +30,8 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     }
     fetchBlogs();
-  }, [blogs]);
-
+  }, []);
+   
   async function addNewBlog(blog: Blog) {
     try {
       const newBlog = await addBlog(blog);
@@ -71,8 +71,6 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
     </UserBlogsContext.Provider>
   );
 };
-
-
 
 export function useBlog() {
   const context = useContext(UserBlogsContext);
