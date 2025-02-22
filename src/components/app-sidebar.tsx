@@ -42,14 +42,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuItem>
               <Link href={'/dashboard'} passHref>
                 <SidebarMenuButton asChild>
-                  <a className="font-medium">Blog Stream</a>
+                  <a className="font-medium truncate">Blog Stream</a>
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <Link href={'/dashboard/create'} passHref>
                 <SidebarMenuButton asChild>
-                  <a className="font-medium">Create Blog</a>
+                  <a className="font-medium truncate">Create Blog</a>
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
@@ -64,7 +64,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <div className="flex flex-row justify-between">
                     <Link href={`/dashboard/edit?id=${blog.id}`} passHref>
                       <SidebarMenuButton asChild>
-                        <a className="font-medium">{blog.title}</a>
+                        <a className="font-medium truncate">{blog.title}</a>
                       </SidebarMenuButton>
                     </Link>
                     <Button
