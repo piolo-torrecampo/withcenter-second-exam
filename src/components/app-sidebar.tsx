@@ -41,14 +41,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroupLabel>Options</SidebarGroupLabel>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <Link href={'/dashboard'} className="font-medium">Blog Stream</Link>
-              </SidebarMenuButton>
+              <Link href={'/dashboard'} passHref>
+                <SidebarMenuButton asChild>
+                  <a className="font-medium">Blog Stream</a>
+                </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <Link href={'/dashboard/create'} className="font-medium">Create a Blog</Link>
-              </SidebarMenuButton>
+              <Link href={'/dashboard/create'} passHref>
+                <SidebarMenuButton asChild>
+                  <a className="font-medium">Create Blog</a>
+                </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
@@ -58,24 +62,26 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <div className="max-h-[400px] overflow-y-auto">
               {blogs.map((blog) => (
                 <SidebarMenuSubItem key={blog.id}>
-                  <SidebarMenuSubButton asChild>
-                    <div className="flex flex-row justify-between">
-                      <Link href={`/dashboard/edit?id=${blog.id}`} className="truncate">{blog.title}</Link>
-                      <Button
-                        className="bg-transparent"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          if (blog?.id !== undefined) {
-                            deleteBlogById(blog.id);
-                          } else {
-                            console.error("Blog ID is missing!");
-                          }
-                        }}
-                      >
-                        <Trash2 color="black" />
-                      </Button>
-                    </div>
-                  </SidebarMenuSubButton>
+                  <div className="flex flex-row justify-between">
+                    <Link href={`/dashboard/edit?id=${blog.id}`} passHref>
+                      <SidebarMenuButton asChild>
+                        <a className="font-medium">{blog.title}</a>
+                      </SidebarMenuButton>
+                    </Link>
+                    <Button
+                      className="bg-transparent"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (blog?.id !== undefined) {
+                          deleteBlogById(blog.id);
+                        } else {
+                          console.error("Blog ID is missing!");
+                        }
+                      }}
+                    >
+                      <Trash2 color="black" />
+                    </Button>
+                  </div>
                 </SidebarMenuSubItem>
               ))}
             </div>
