@@ -1,6 +1,5 @@
 "use client"
 
-
 interface BlogCardProps {
   id: string;
   title: string;
@@ -10,6 +9,7 @@ interface BlogCardProps {
   onClick: (id: string) => void;
   isSelected?: boolean;
 }
+
 
 const BlogCard = ({
   id,
